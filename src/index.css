@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
 
+  /* Deep Plum */
   --color-canvas: #FCFCFD;
   --color-ink: #1C1C1E;
   --color-slate: #8E8E93;
@@ -10,6 +11,7 @@
   --color-alert: #FF3B30;
   --color-hairline: #E5E5EA;
 
+  /* Families */
   --font-sf-pro-display:
     "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
     Inter, Arial, sans-serif;
@@ -17,9 +19,77 @@
     "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Inter,
     Arial, sans-serif;
 
+  /* Type scale */
+  --text-global-nav: 12px;
+  --leading-global-nav: 1;
+  --tracking-global-nav: -0.12px;
+  --text-compact-control: 12px;
+  --leading-compact-control: 1.33;
+  --tracking-compact-control: -0.12px;
+  --text-body-small: 14px;
+  --leading-body-small: 1.29;
+  --tracking-body-small: -0.224px;
   --text-body: 17px;
   --leading-body: 1.47;
   --tracking-body: -0.374px;
+  --text-product-nav-title: 19px;
+  --leading-product-nav-title: 1.21;
+  --tracking-product-nav-title: 0.228px;
+  --text-product-kicker: 21px;
+  --leading-product-kicker: 1.24;
+  --tracking-product-kicker: -0.2px;
+  --text-post-title: 24px;
+  --leading-post-title: 1.21;
+  --tracking-post-title: -0.3px;
+  --text-state-title: 28px;
+  --leading-state-title: 1.14;
+  --tracking-state-title: -0.2px;
+  --text-person-name: 40px;
+  --leading-person-name: 1.05;
+  --tracking-person-name: 0;
+  --text-hero-display: 80px;
+  --leading-hero-display: 1.05;
+  --tracking-hero-display: -1.2px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Layout */
+  --frame-max: 1080px;
+  --gutter: 40px;
+  --rail-width: 344px;
+  --nav-height: 44px;
+  --index-height: 64px;
+  --section-gap: 90px;
+  --card-padding: 40px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-72: 72px;
+  --spacing-90: 90px;
+  --spacing-128: 128px;
+
+  /* Radii */
+  --radius-card: 28px;
+  --radius-textarea: 20px;
+  --radius-row: 10px;
+  --radius-search: 980px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 *,
@@ -40,16 +110,66 @@ body {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
+  caret-color: var(--color-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
 }
 
 button,
 input,
 textarea {
   font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+svg {
+  display: block;
+}
+
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 #root {
   min-height: 100dvh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

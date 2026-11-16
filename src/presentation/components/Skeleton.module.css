@@ -1,0 +1,61 @@
+.skeleton {
+  display: block;
+  background: var(--color-accent-light);
+  border-radius: var(--radius-pill);
+  animation: pulse 1.6s var(--ease) infinite;
+}
+
+.line {
+  height: 10px;
+  border-radius: 4px;
+}
+
+.title {
+  height: 20px;
+  border-radius: 6px;
+}
+
+.avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  min-height: 64px;
+  padding: var(--spacing-12);
+}
+
+.lines {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--color-hairline);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
