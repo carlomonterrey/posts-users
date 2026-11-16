@@ -3,8 +3,8 @@
   place-items: center;
   flex: none;
   border-radius: 50%;
-  background: var(--color-accent-light);
-  color: var(--color-ink);
+  border: 1px solid transparent;
+  color: var(--color-pure-white);
   font-family: var(--font-sf-pro-text);
   font-weight: var(--font-weight-semibold);
   line-height: 1;
@@ -23,7 +23,6 @@
   font-size: 17px;
 }
 
-.inverse {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
+.selected {
+  border-color: rgba(255, 255, 255, 0.65);
 }

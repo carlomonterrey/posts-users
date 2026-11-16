@@ -18,20 +18,36 @@ describe('getInitials', () => {
 
 describe('Avatar', () => {
   it('renders decorative initials', () => {
-    render(<Avatar name="Leanne Graham" />);
+    render(<Avatar id={1} name="Leanne Graham" />);
 
     const avatar = screen.getByText('LG');
 
     expect(avatar).toHaveAttribute('aria-hidden', 'true');
     expect(avatar).toHaveAttribute('data-size', 'sm');
+    expect(avatar).toHaveAttribute('data-avatar-index', '1');
   });
 
-  it('renders the inverse tone in the selected row', () => {
-    render(<Avatar name="Leanne Graham" tone="inverse" size="lg" />);
+  it('picks a palette color from the user id', () => {
+    render(<Avatar id={1} name="Leanne Graham" />);
 
     const avatar = screen.getByText('LG');
 
-    expect(avatar).toHaveAttribute('data-tone', 'inverse');
+    expect(avatar.getAttribute('style')).toContain(
+      'var(--color-avatar-2)',
+    );
+  });
+
+  it('keeps the palette while selected and adds the ring', () => {
+    render(
+      <Avatar id={4} name="Patricia Lebsack" size="lg" selected />,
+    );
+
+    const avatar = screen.getByText('PL');
+
     expect(avatar).toHaveAttribute('data-size', 'lg');
+    expect(avatar).toHaveAttribute('data-selected', 'true');
+    expect(avatar.getAttribute('style')).toContain(
+      'var(--color-avatar-1)',
+    );
   });
 });

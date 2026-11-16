@@ -42,8 +42,8 @@ It is a working demo, not a publishing tool. Nothing is persisted beyond the ses
 - The first screen reads as a designed gallery, not an admin dashboard: one 80px statement, one search control, one directory, one feed.
 - All mandated behaviour is covered by tests, including a repository rejection and an aborted request.
 - The interface is keyboard-operable, announces async states, meets WCAG 2.2 AA contrast and target sizes, and never uses color alone.
-- No drop shadows. Surfaces move between Canvas `#FCFCFD` and Accent Light `#E8DDFF`, with 28px radii and 1px `#E5E5EA` hairlines.
-- Deep Plum Primary `#5E2E8C` appears only on the Publish pill, text links, focus, the “New” label and the selected person. Alert `#FF3B30` is reserved for invalid input.
+- No drop shadows. Surfaces move between Canvas `#FCFCFD`, Studio Mist `#F5F5F7` (composer card) and Accent Light `#E8DDFF` (footer band), with 28px radii and 1px `#E5E5EA` hairlines. Composer inputs are pure white.
+- Deep Plum Primary `#5E2E8C` is reserved for the Publish pill, text links, focus, the “New” label and the selected person; the four fixed monogram fills carry identity only. Alert `#FF3B30` is reserved for invalid input.
 
 ## Accessibility
 

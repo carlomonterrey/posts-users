@@ -42,7 +42,7 @@ export function PostFeed({
   return (
     <div className={styles.feed}>
       <header className={styles.person}>
-        <Avatar name={user.name} size="lg" />
+        <Avatar id={user.id} name={user.name} size="lg" />
         <div className={styles.personText}>
           <h2 className={styles.name}>{user.name}</h2>
           <p className={styles.handle}>@{user.username}</p>

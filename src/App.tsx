@@ -100,7 +100,7 @@ export function App({ usersRepository, postsRepository }: AppProps) {
 
         <div className={styles.indexBar}>
           <div className={`${styles.frame} ${styles.indexInner}`}>
-            <div className={styles.search} role="search">
+            <div className={styles.search} role="search" aria-label="Find people">
               <svg
                 className={styles.searchIcon}
                 viewBox="0 0 16 16"
@@ -133,6 +133,9 @@ export function App({ usersRepository, postsRepository }: AppProps) {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                enterKeyHint="search"
                 spellCheck={false}
               />
             </div>

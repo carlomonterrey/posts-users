@@ -2,37 +2,45 @@
 
 **Theme:** light · **Surface:** Operate (task completion) · **Palette:** Deep Plum
 
-A near-white gallery with one deep plum punctuation. The structure is Apple-derived: an 80px product statement, tight SF Pro tracking, a 1080px frame, 28px surfaces, 980px search and title fields, 9999px pills, and 1px hairlines. The palette is Deep Plum: a pale lavender writing surface, ink typography, slate metadata, and a single bright alert for invalid input. Nothing is raised by a shadow. Monograms carry identity; there is no photography.
+A near-white gallery with one deep plum punctuation. The structure is Apple-derived: an 80px product statement, tight SF Pro tracking, a 1080px frame, 28px surfaces, 980px search and title fields, 9999px pills, and 1px hairlines. The palette is Deep Plum: a quiet mist composer, a pale lavender footer, ink typography, slate metadata, a fixed four-color monogram palette, and a single bright alert for invalid input. Nothing is raised by a shadow. Monograms carry identity; there is no photography.
 
 ## Color
 
 | Name | Value | Token | Role |
 |---|---|---|---|
-| Canvas | `#FCFCFD` | `--color-canvas` | Page, navigation, index bar, input fills, post feed and the quiet majority of the page. |
+| Canvas | `#FCFCFD` | `--color-canvas` | Page, navigation, index bar, post feed and the quiet majority of the page. |
+| Studio Mist | `#F5F5F7` | `--color-studio-mist` | Composer card surface. The one quiet gray field on the page. |
+| Pure White | `#FFFFFF` | `--color-pure-white` | Composer input fills and avatar initials. |
 | Ink | `#1C1C1E` | `--color-ink` | Headlines, body copy, input text, footer legal text, and selected text on primary. |
 | Slate | `#8E8E93` | `--color-slate` | Supporting copy, handles, counts, placeholders, icons, and control outlines. Never post bodies, errors or instructions. |
-| Primary | `#5E2E8C` | `--color-primary` | Publish pill, text links, focus rings, the “New” label and the selected person. The only chromatic action color. |
+| Primary | `#5E2E8C` | `--color-primary` | Publish pill, text links, focus rings, the “New” label and the selected person. The only chromatic action color; Avatar 1 is a separate identity role. |
 | Primary Hover | `#4A2370` | `--color-primary-hover` | Hover and pressed state for the Publish pill and text links. |
-| Accent Light | `#E8DDFF` | `--color-accent-light` | The composer surface, footer band, row hover, avatar fills, skeletons and the review bar hover. |
+| Accent Light | `#E8DDFF` | `--color-accent-light` | Footer band, row hover, skeletons and the review bar hover. |
+| Avatar 1 | `#5E2E8C` | `--color-avatar-1` | Monogram fill for `user.id % 4 === 0`. Identity only; never state. |
+| Avatar 2 | `#3949AB` | `--color-avatar-2` | Monogram fill for `user.id % 4 === 1`. Identity only; never state. |
+| Avatar 3 | `#00897B` | `--color-avatar-3` | Monogram fill for `user.id % 4 === 2`. Identity only; never state. |
+| Avatar 4 | `#D81B60` | `--color-avatar-4` | Monogram fill for `user.id % 4 === 3`. Identity only; never state. |
 | Alert | `#FF3B30` | `--color-alert` | Invalid field edges and their short validation messages only. Never a page error, decoration or status. |
 | Hairline | `#E5E5EA` | `--color-hairline` | Every 1px divider and edge: navigation, list header, feed separators, review chrome. |
 
 ### Balance
 
 - **~80% Canvas** — the gallery; the page is mostly air.
-- **~15% Accent Light** — one writing surface and one footer band; never a stack of lavender cards.
+- **~10% Studio Mist and Accent Light** — one composer card and one footer band; never a stack of tinted cards.
 - **~5% Primary** — a pill, a link, a New label, a selected row. It stays punctuation.
-- Alert appears only when the form is invalid. There is no second accent and no orange.
+- The four avatar fills are small identity marks, not surfaces; they never become a second accent. Alert appears only when the form is invalid; there is no orange.
 
 ### Text on surfaces
 
 - On **Canvas**, use Ink for primary copy and Slate only for supporting metadata.
+- On **Studio Mist**, labels and counts use Ink; the fields are **Pure White** with a Slate edge. Secondary text steps up to Ink.
 - On **Accent Light**, secondary text steps up to **Ink**. Slate is too quiet against `#E8DDFF`.
 - On **Primary**, use white for the name/action and `Accent Light` for the handle.
+- On **avatar fills**, the initials are white at 600.
 
 ### Contrast note
 
-Ink on Canvas and Accent Light clears AA comfortably. White on Primary and Primary on Canvas also clear AA. Slate (`#8E8E93`) is roughly **3.2:1** on Canvas and lower on Accent Light, so it is reserved for supporting display copy and non-essential metadata; the form labels, footer note, error instructions and post bodies use Ink. Alert (`#FF3B30`) is a vivid functional red; it is always paired with a 1px border and explanatory text, never used as the only signal. If the project later requires strict AA for 12px error copy, keep the alert border and move the message text to Ink.
+Ink on Canvas and Accent Light clears AA comfortably. White on Primary and Primary on Canvas also clear AA. Slate (`#8E8E93`) is roughly **3.2:1** on Canvas and lower on Accent Light, so it is reserved for supporting display copy and non-essential metadata; the form labels, footer note, error instructions and post bodies use Ink. Alert (`#FF3B30`) is a vivid functional red; it is always paired with a 1px border and explanatory text, never used as the only signal. Avatar initials are decorative and sit beside the full name; the teal fill is the tightest white-text pair, so identity never depends on the monogram alone. Composer inputs are Pure White against Studio Mist with a 1px Slate edge. If the project later requires strict AA for 12px error copy, keep the alert border and move the message text to Ink.
 
 ## Typography
 
@@ -66,7 +74,7 @@ Ink on Canvas and Accent Light clears AA comfortably. White on Primary and Prima
 5. **Section heading** — 21px/600, 1.24, `-0.2px`, Ink (“People”, “Write a post”, “Posts”).
 6. **Body** — 17px/400, 1.47, `-0.374px`, Ink. Max measure 65ch.
 7. **Meta** — 14px or 12px, `-0.224px` / `-0.12px`, Slate. Handles, counts, placeholders, hints.
-8. **Labels** — 12px/500, `-0.12px`, Ink on the lavender composer; Slate on Canvas metadata.
+8. **Labels** — 12px/500, `-0.12px`, Ink on the mist composer; Slate on Canvas metadata. Required fields add a Primary asterisk.
 
 The hero is the only 80px line. The scale steps down decisively: 80 → 40 → 24 → 21 → 17 → 12.
 
@@ -93,7 +101,7 @@ The hero is the only 80px line. The scale steps down decisively: 80 → 40 → 2
 | Buttons / pills | 9999px |
 | Avatars | 50% |
 
-**Elevation:** zero shadows. Separation comes from Canvas against Accent Light, 28px corners and 1px Hairline edges. There are no gradient fills and no offset shadows. A 2px Primary focus ring with a 3px offset is the only visible halo, and it is an accessibility affordance, not elevation.
+**Elevation:** zero shadows. Separation comes from Canvas against Studio Mist, the composer’s 1px Hairline edge, 28px corners and 1px Hairline dividers. The selected avatar’s 1px white ring is a boundary, not elevation. There are no gradient fills and no offset shadows. A 2px Primary focus ring with a 3px offset is the only visible halo, and it is an accessibility affordance, not elevation.
 
 ## Components
 
@@ -111,19 +119,19 @@ Canvas. 72px top, 56px bottom. 80px H1 Ink, one line. 21px Slate lede directly b
 
 ### Directory
 
-Aside, sticky at `132px`, own scroll. Header: “People” 14px/600 Ink and a 12px Slate count, separated by 1px Hairline. Rows: 64px, 10px radius, 12px horizontal padding, 2px gap, 40px accent-light monogram avatar, 17px/500 Ink name, 12px Slate handle. Hover: Accent Light. Selected: **Primary fill**, white name, Accent Light handle, 1px Primary edge; the avatar becomes white 14% with white initials. This is the one saturated block on the page.
+Aside, sticky at `132px`, own scroll. Header: “People” 14px/600 Ink and a 12px Slate count, separated by 1px Hairline. Rows: 64px, 10px radius, 12px horizontal padding, 2px gap, 40px palette monogram avatar, 17px/500 Ink name, 12px Slate handle. Hover: Accent Light. Selected: **Primary fill**, white name, Accent Light handle, 1px Primary edge; the avatar keeps its id palette fill and gains a 1px white ring, with white initials. This is the one saturated block on the page.
 
 ### Person header
 
-56px avatar, 40px name Ink, 14px Slate handle. 1px Hairline rule 28px below, then 32px to the composer. No card.
+56px palette avatar, 40px name Ink, 14px Slate handle. 1px Hairline rule 28px below, then 32px to the composer. No card.
 
 ### Composer
 
-The only large soft surface: Accent Light, 28px radius, 40px padding, no border, no shadow. Header “Write a post” 21px/600 Ink, “as Leanne Graham” 12px Ink right. Two fields only:
+The only large soft surface: Studio Mist, 28px radius, 40px padding, 1px Hairline border, no shadow. Header “Write a post” 21px/600 Ink, “as Leanne Graham” 12px Ink right. Two required fields only:
 
-- Title: 52px, 9999px radius, Canvas fill, 1px Slate edge, 22px horizontal padding, 17px text. Focus: 1px Primary edge, 2px Primary ring.
-- Body: 128px minimum, 20px radius, Canvas fill, 1px Slate edge, 20px padding, 17px/1.47 text.
-- Labels: 12px/500 Ink, 8px above the control. Placeholders Slate.
+- Title: 52px, 9999px radius, Pure White fill, 1px Slate edge, 22px horizontal padding, 17px text. Focus: 1px Primary edge, 2px Primary ring.
+- Body: 128px minimum, 20px radius, Pure White fill, 1px Slate edge, 20px padding, 17px/1.47 text; vertical resize.
+- Labels: 12px/500 Ink, 8px above the control; required fields add a Primary asterisk and the native `required` attribute. Placeholders Slate.
 - Footer: “0 / 500” 12px Ink tabular left; “Clear” 12px Primary text action; “Publish” 44px Primary pill, white 12px/400 label, hover and pressed `Primary Hover`. 20px gap between actions.
 - Invalid: 1px Alert edge on the field, 12px Alert message 8px below, `aria-invalid` and `aria-describedby`. Text states the problem; color is never alone.
 
@@ -157,12 +165,12 @@ Hover and focus transitions 160ms with `cubic-bezier(0.32, 0.72, 0, 1)`. A newly
 
 **Do**
 
-- Use Canvas as the page and Accent Light for exactly one writing surface and one footer band.
+- Use Canvas as the page, Studio Mist for the composer, Accent Light for the footer band, and Pure White for composer inputs.
 - Use Primary for the Publish pill, text links, the New label, the selected row and focus.
 - Use 1px `#E5E5EA` hairlines for every divider and edge.
 - Keep 28px for the composer, 20px for the textarea, 980px for search/title, 9999px for pills.
-- Keep body copy and instructions in Ink; on Accent Light, secondary text also steps up to Ink.
-- Use monogram initials for identity; no photos, no external avatar service.
+- Keep body copy and instructions in Ink; on Studio Mist and Accent Light, secondary text also steps up to Ink.
+- Use monogram initials from the four fixed avatar colors, assigned by `user.id % 4`; white 600; no photos, no external avatar service.
 
 **Don't**
 
@@ -171,6 +179,9 @@ Hover and focus transitions 160ms with `cubic-bezier(0.32, 0.72, 0, 1)`. A newly
 - Don't use Slate for post bodies, errors, instructions or legal text.
 - Don't use Alert for load errors, status or decoration; only invalid input.
 - Don't introduce colored status pills for “New”; it is bare Primary text.
+- Don't tint avatars by selection or status; selection adds a 1px white ring.
+- Don't use Accent Light for the composer; Studio Mist is the quiet surface.
+- Don't introduce a fifth avatar color.
 - Don't shrink the composer to a boxed admin panel or nest cards inside it.
 
 ## Quick Start
@@ -179,11 +190,17 @@ Hover and focus transitions 160ms with `cubic-bezier(0.32, 0.72, 0, 1)`. A newly
 :root {
   /* Deep Plum */
   --color-canvas: #FCFCFD;
+  --color-studio-mist: #F5F5F7;
+  --color-pure-white: #FFFFFF;
   --color-ink: #1C1C1E;
   --color-slate: #8E8E93;
   --color-primary: #5E2E8C;
   --color-primary-hover: #4A2370;
   --color-accent-light: #E8DDFF;
+  --color-avatar-1: #5E2E8C;
+  --color-avatar-2: #3949AB;
+  --color-avatar-3: #00897B;
+  --color-avatar-4: #D81B60;
   --color-alert: #FF3B30;
   --color-hairline: #E5E5EA;
 
@@ -262,7 +279,7 @@ Hover and focus transitions 160ms with `cubic-bezier(0.32, 0.72, 0, 1)`. A newly
   --radius-pill: 9999px;
   --radius-avatar: 50%;
 
-  /* Elevation: none. Use --color-hairline and --color-accent-light. */
+  /* Elevation: none. Use --color-hairline, --color-studio-mist and --color-accent-light. */
 }
 ```
 

@@ -94,8 +94,9 @@ export const UserList = memo(function UserList({
                   title={user.name}
                 >
                   <Avatar
+                    id={user.id}
                     name={user.name}
-                    tone={isSelected ? 'inverse' : 'default'}
+                    selected={isSelected}
                   />
                   <span className={styles.personText}>
                     <span className={styles.name}>{user.name}</span>

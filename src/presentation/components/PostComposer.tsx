@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import type { NewPostInput } from '../../application/types';
 import type { PostValidationErrors } from '../../domain/postValidation';
@@ -16,57 +16,83 @@ export function PostComposer({ userName, onPublish }: PostComposerProps) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState<PostValidationErrors>({});
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [status, setStatus] = useState('');
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
+  const focusAfterValidation = useRef<'title' | 'body' | null>(null);
 
-  function revalidate(nextTitle: string, nextBody: string): void {
-    if (hasSubmitted) {
-      setErrors(validatePost(nextTitle, nextBody));
+  useEffect(() => {
+    const target = focusAfterValidation.current;
+
+    if (target === null) {
+      return;
     }
-  }
+
+    focusAfterValidation.current = null;
+
+    if (target === 'title') {
+      titleRef.current?.focus();
+    } else {
+      bodyRef.current?.focus();
+    }
+  }, [errors]);
 
   function handleTitleChange(event: ChangeEvent<HTMLInputElement>): void {
     const nextTitle = event.target.value;
     setTitle(nextTitle);
-    revalidate(nextTitle, body);
+    setErrors((current) => {
+      if (!current.title) {
+        return current;
+      }
+
+      const next = validatePost(nextTitle, body);
+      return { ...current, title: next.title };
+    });
   }
 
   function handleBodyChange(event: ChangeEvent<HTMLTextAreaElement>): void {
     const nextBody = event.target.value;
     setBody(nextBody);
-    revalidate(title, nextBody);
+    setErrors((current) => {
+      if (!current.body) {
+        return current;
+      }
+
+      const next = validatePost(title, nextBody);
+      return { ...current, body: next.body };
+    });
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
+    setStatus('');
 
     const nextErrors = validatePost(title, body);
     setErrors(nextErrors);
-    setHasSubmitted(true);
 
     if (nextErrors.title) {
-      titleRef.current?.focus();
+      focusAfterValidation.current = 'title';
       return;
     }
 
     if (nextErrors.body) {
-      bodyRef.current?.focus();
+      focusAfterValidation.current = 'body';
       return;
     }
 
-    onPublish({ title: title.trim(), body: body.trim() });
+    const publishedTitle = title.trim();
+    onPublish({ title: publishedTitle, body: body.trim() });
+    setStatus(`Published “${publishedTitle}”.`);
     setTitle('');
     setBody('');
     setErrors({});
-    setHasSubmitted(false);
   }
 
   function handleClear(): void {
     setTitle('');
     setBody('');
     setErrors({});
-    setHasSubmitted(false);
+    setStatus('');
     titleRef.current?.focus();
   }
 
@@ -79,7 +105,11 @@ export function PostComposer({ userName, onPublish }: PostComposerProps) {
         <p className={styles.as}>as {userName}</p>
       </div>
 
-      <form noValidate onSubmit={handleSubmit}>
+      <form
+        noValidate
+        aria-labelledby="composer-title"
+        onSubmit={handleSubmit}
+      >
         <div className={styles.fields}>
           <Input
             ref={titleRef}
@@ -88,6 +118,8 @@ export function PostComposer({ userName, onPublish }: PostComposerProps) {
             label="Title"
             placeholder="Give it a title"
             autoComplete="off"
+            required
+            minLength={POST_LIMITS.title.min}
             maxLength={POST_LIMITS.title.max}
             value={title}
             onChange={handleTitleChange}
@@ -100,6 +132,8 @@ export function PostComposer({ userName, onPublish }: PostComposerProps) {
             label="Body"
             placeholder="Start with a sentence."
             rows={4}
+            required
+            minLength={POST_LIMITS.body.min}
             maxLength={POST_LIMITS.body.max}
             value={body}
             onChange={handleBodyChange}
@@ -118,6 +152,10 @@ export function PostComposer({ userName, onPublish }: PostComposerProps) {
             <Button type="submit">Publish</Button>
           </div>
         </div>
+
+        <p className={styles.srOnly} role="status">
+          {status}
+        </p>
       </form>
     </section>
   );

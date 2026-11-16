@@ -7,12 +7,11 @@ describe('Input', () => {
     render(<Input id="title" label="Title" error="Enter a title." />);
 
     const input = screen.getByLabelText('Title');
-    const error = screen.getByRole('alert');
+    const error = screen.getByText('Enter a title.');
 
     expect(input).toHaveAttribute('aria-invalid', 'true');
     expect(input).toHaveAttribute('aria-describedby', 'title-error');
     expect(error).toHaveAttribute('id', 'title-error');
-    expect(error).toHaveTextContent('Enter a title.');
   });
 
   it('renders a plain input without error attributes', () => {
@@ -20,8 +19,17 @@ describe('Input', () => {
 
     const input = screen.getByLabelText('Name');
 
-    expect(input).not.toHaveAttribute('aria-invalid');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input).not.toHaveAttribute('aria-describedby');
+  });
+
+  it('marks a required field and keeps the marker out of the label text', () => {
+    render(<Input id="title" label="Title" required />);
+
+    const input = screen.getByLabelText('Title');
+
+    expect(input).toBeRequired();
+    expect(input).toHaveAttribute('aria-invalid', 'false');
   });
 
   it('renders an accessible textarea with the same contract', () => {
@@ -34,6 +42,9 @@ describe('Input', () => {
     expect(textarea.tagName).toBe('TEXTAREA');
     expect(textarea).toHaveAttribute('aria-invalid', 'true');
     expect(textarea).toHaveAttribute('aria-describedby', 'body-error');
-    expect(screen.getByRole('alert')).toHaveTextContent('Add a body.');
+    expect(screen.getByText('Add a body.')).toHaveAttribute(
+      'id',
+      'body-error',
+    );
   });
 });

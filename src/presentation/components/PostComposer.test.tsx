@@ -50,6 +50,9 @@ describe('PostComposer', () => {
     expect(screen.getByLabelText('Title')).toHaveValue('');
     expect(screen.getByLabelText('Body')).toHaveValue('');
     expect(screen.getByText('0 / 500')).toBeInTheDocument();
+    expect(screen.getByRole('status')).toHaveTextContent(
+      'Published “A local post”.',
+    );
   });
 
   it('clears the draft and errors', async () => {

@@ -21,11 +21,17 @@
     :root {
       /* Deep Plum */
       --color-canvas: #FCFCFD;
+      --color-studio-mist: #F5F5F7;
+      --color-pure-white: #FFFFFF;
       --color-ink: #1C1C1E;
       --color-slate: #8E8E93;
       --color-primary: #5E2E8C;
       --color-primary-hover: #4A2370;
       --color-accent-light: #E8DDFF;
+      --color-avatar-1: #5E2E8C;
+      --color-avatar-2: #3949AB;
+      --color-avatar-3: #00897B;
+      --color-avatar-4: #D81B60;
       --color-alert: #FF3B30;
       --color-hairline: #E5E5EA;
 
@@ -429,11 +435,6 @@
       color: var(--color-ink);
     }
 
-    body[data-state="empty"] .person[aria-current="true"] .avatar {
-      background: var(--color-accent-light);
-      color: var(--color-ink);
-    }
-
     body[data-state="empty"] .person[aria-current="true"] .person__handle {
       color: var(--color-slate);
     }
@@ -486,18 +487,22 @@
       flex: none;
       width: 40px;
       height: 40px;
+      border: 1px solid transparent;
       border-radius: 50%;
-      background: var(--color-accent-light);
-      color: var(--color-ink);
+      color: var(--color-pure-white);
       font-size: 12px;
       font-weight: 600;
       line-height: 1;
       letter-spacing: 0.2px;
     }
 
+    .avatar--1 { background: var(--color-avatar-1); }
+    .avatar--2 { background: var(--color-avatar-2); }
+    .avatar--3 { background: var(--color-avatar-3); }
+    .avatar--4 { background: var(--color-avatar-4); }
+
     .person[aria-current="true"] .avatar {
-      background: rgba(255, 255, 255, 0.14);
-      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.65);
     }
 
     .person__text {
@@ -553,7 +558,6 @@
     .avatar--lg {
       width: 56px;
       height: 56px;
-      background: var(--color-accent-light);
       font-size: 17px;
       letter-spacing: 0.2px;
     }
@@ -586,8 +590,9 @@
     .composer {
       margin-top: 32px;
       padding: 40px;
+      border: 1px solid var(--color-hairline);
       border-radius: 28px;
-      background: var(--color-accent-light);
+      background: var(--color-studio-mist);
     }
 
     .composer__head {
@@ -628,11 +633,15 @@
       color: var(--color-ink);
     }
 
+    .field__required {
+      color: var(--color-primary);
+    }
+
     .field__input,
     .field__textarea {
       width: 100%;
       border: 1px solid var(--color-slate);
-      background: var(--color-canvas);
+      background: var(--color-pure-white);
       color: var(--color-ink);
       font-family: var(--font-text);
       font-size: 17px;
@@ -1480,7 +1489,7 @@
         <ul class="people" id="people-list" role="list">
           <li>
             <button class="person" type="button" aria-current="true" data-selected="true">
-              <span class="avatar" aria-hidden="true">LG</span>
+              <span class="avatar avatar--2" aria-hidden="true">LG</span>
               <span class="person__text">
                 <span class="person__name">Leanne Graham</span>
                 <span class="person__handle">@Bret</span>
@@ -1489,7 +1498,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">EH</span>
+              <span class="avatar avatar--3" aria-hidden="true">EH</span>
               <span class="person__text">
                 <span class="person__name">Ervin Howell</span>
                 <span class="person__handle">@Antonette</span>
@@ -1498,7 +1507,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">CB</span>
+              <span class="avatar avatar--4" aria-hidden="true">CB</span>
               <span class="person__text">
                 <span class="person__name">Clementine Bauch</span>
                 <span class="person__handle">@Samantha</span>
@@ -1507,7 +1516,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">PL</span>
+              <span class="avatar avatar--1" aria-hidden="true">PL</span>
               <span class="person__text">
                 <span class="person__name">Patricia Lebsack</span>
                 <span class="person__handle">@Karianne</span>
@@ -1516,7 +1525,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">CD</span>
+              <span class="avatar avatar--2" aria-hidden="true">CD</span>
               <span class="person__text">
                 <span class="person__name">Chelsey Dietrich</span>
                 <span class="person__handle">@Kamren</span>
@@ -1525,7 +1534,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">DS</span>
+              <span class="avatar avatar--3" aria-hidden="true">DS</span>
               <span class="person__text">
                 <span class="person__name">Mrs. Dennis Schulist</span>
                 <span class="person__handle">@Leopoldo_Corkery</span>
@@ -1534,7 +1543,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">KW</span>
+              <span class="avatar avatar--4" aria-hidden="true">KW</span>
               <span class="person__text">
                 <span class="person__name">Kurtis Weissnat</span>
                 <span class="person__handle">@Elwyn.Skiles</span>
@@ -1543,7 +1552,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">NR</span>
+              <span class="avatar avatar--1" aria-hidden="true">NR</span>
               <span class="person__text">
                 <span class="person__name">Nicholas Runolfsdottir V</span>
                 <span class="person__handle">@Maxime_Nienow</span>
@@ -1552,7 +1561,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">GR</span>
+              <span class="avatar avatar--2" aria-hidden="true">GR</span>
               <span class="person__text">
                 <span class="person__name">Glenna Reichert</span>
                 <span class="person__handle">@Delphine</span>
@@ -1561,7 +1570,7 @@
           </li>
           <li>
             <button class="person" type="button">
-              <span class="avatar" aria-hidden="true">CD</span>
+              <span class="avatar avatar--3" aria-hidden="true">CD</span>
               <span class="person__text">
                 <span class="person__name">Clementina DuBuque</span>
                 <span class="person__handle">@Moriah.Stanton</span>
@@ -1629,7 +1638,7 @@
       <section class="feed">
         <div class="feed-default">
           <header class="person-hero">
-            <span class="avatar avatar--lg" aria-hidden="true">LG</span>
+            <span class="avatar avatar--lg avatar--2" aria-hidden="true">LG</span>
             <div>
               <h2 class="person-hero__name">Leanne Graham</h2>
               <p class="person-hero__handle">@Bret</p>
@@ -1645,13 +1654,13 @@
             </div>
             <form novalidate onsubmit="return false">
               <div class="field">
-                <label class="field__label" for="post-title">Title</label>
-                <input class="field__input" id="post-title" name="title" type="text" placeholder="Give it a title" maxlength="80" autocomplete="off">
+                <label class="field__label" for="post-title">Title <span class="field__required" aria-hidden="true">*</span></label>
+                <input class="field__input" id="post-title" name="title" type="text" placeholder="Give it a title" maxlength="80" autocomplete="off" required>
                 <p class="field__error" id="title-error">Enter a title of at least 3 characters.</p>
               </div>
               <div class="field">
-                <label class="field__label" for="post-body">Body</label>
-                <textarea class="field__textarea" id="post-body" name="body" placeholder="Start with a sentence." maxlength="500"></textarea>
+                <label class="field__label" for="post-body">Body <span class="field__required" aria-hidden="true">*</span></label>
+                <textarea class="field__textarea" id="post-body" name="body" placeholder="Start with a sentence." maxlength="500" required></textarea>
                 <p class="field__error" id="body-error">Add a body of at least 10 characters.</p>
               </div>
               <div class="composer__foot">

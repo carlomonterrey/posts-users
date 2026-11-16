@@ -3,11 +3,17 @@
 
   /* Deep Plum */
   --color-canvas: #FCFCFD;
+  --color-studio-mist: #F5F5F7;
+  --color-pure-white: #FFFFFF;
   --color-ink: #1C1C1E;
   --color-slate: #8E8E93;
   --color-primary: #5E2E8C;
   --color-primary-hover: #4A2370;
   --color-accent-light: #E8DDFF;
+  --color-avatar-1: #5E2E8C;
+  --color-avatar-2: #3949AB;
+  --color-avatar-3: #00897B;
+  --color-avatar-4: #D81B60;
   --color-alert: #FF3B30;
   --color-hairline: #E5E5EA;
 
