@@ -1,0 +1,55 @@
+:root {
+  color-scheme: light;
+
+  --color-canvas: #FCFCFD;
+  --color-ink: #1C1C1E;
+  --color-slate: #8E8E93;
+  --color-primary: #5E2E8C;
+  --color-primary-hover: #4A2370;
+  --color-accent-light: #E8DDFF;
+  --color-alert: #FF3B30;
+  --color-hairline: #E5E5EA;
+
+  --font-sf-pro-display:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Inter, Arial, sans-serif;
+  --font-sf-pro-text:
+    "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Inter,
+    Arial, sans-serif;
+
+  --text-body: 17px;
+  --leading-body: 1.47;
+  --tracking-body: -0.374px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sf-pro-text);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100dvh;
+}
